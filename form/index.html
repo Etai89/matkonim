@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מתכונים</title>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="ingredients.js"></script>
-        <script src="script.js"></script>
+    <title>לה פטיסייר - מתכונים</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="ingredients.js"></script> <!-- External ingredients data -->
+    <script src="productNames.js"></script> <!-- External products data -->
+    <script src="conditors.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="script.js"></script>
 </head>
-<h1>תיעוד כמויות מתכונים</h1>
-<input class="productName" type="text" placeholder="שם המוצר"><br>
-<input class="amountOfProducts" type="text" placeholder="כמות מיוצרת"><br>
+<body>
+    <!-- Logo -->
+    <header class="logo-container">
+        <img src="logo.png" alt="Logo" class="logo">
+    </header>
+    <h1>לה פטיסייר - מתכונים</h1>
+    
+    <!-- Product Selection -->
+    <label for="conditors">שם הקונדיטור:</label>
 
-<div class="box">
-    <!-- <input class="ingredient" type="text" placeholder="חומר גלם">
-    <select class="unit">
-        <option>גרם</option>
+    <select class="conditors" id="conditorsNames" style="width: 200px;">
+        <option value="choose">בחר את שמך</option>
+        <option value="ayala">איילה</option>
+        <option value="naava">נאוה</option>
+        <option value="nataly">נטלי</option>
+        <option value="neomi">נעמי</option>
+        <option value="michael">מיכאל</option>
+        <option value="shraif">שריף</option>
+    </select><br>
+
+    <label for="productName">שם המוצר:</label>
+    <select class="productName" id="productName" style="width: 200px;"></select><br>
+
+    <label for="amountOfProducts">כמות מיוצרת:</label>
+    <input class="amountOfProducts" type="number" placeholder="כמות מיוצרת"><br>
+
+    <!-- Ingredient Selection -->
+    <div class="box"></div>
+    <label for="unitType">יחידת מידה:</label>
+    <select id="unitType" style="width: 200px;">
         <option>קילו</option>
+        <option>גרם</option>
         <option>ליטר</option>
         <option>יחידה</option>
     </select>
-    <input class="equity" type="text" placeholder="כמות"> -->
+    <input type="number" id="quantity" placeholder="כמות"><br>
 
-</div>
-<button id="addIngredient">הוסף חומר גלם</button>
-<button id="finish">סיים</button>
+    <button id="addIngredient">הוסף חומר גלם</button>
+    <button id="finish">סיים</button>
 
-<div>
-    <ul class="checked">
+    <!-- Checked Ingredients List -->
+    <div>
+        <ul class="checked"></ul>
+    </div>
 
-    </ul>
-</div>
-<div class="final"></div>
-
-<body>
-
+    <!-- Final Recipes -->
+    <div class="final"></div>
+    <p class="cRights">© 2024 Etai Hatuel Web developments. All rights reserved. <span id="etaiPhone">054-9832002</span>
+        <span id="etaiEmail"><a href="mailto:senioretai@gmail.com">senioretai@gmail.com</a></span>
+    </p>
 </body>
-
 </html>

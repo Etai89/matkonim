@@ -1,0 +1,148 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('logo.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.9);
+    background-blend-mode: lighten;
+
+    color: #333;
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #444;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+/* Form Containers */
+input, select, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Logo Container */
+.logo-container {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    width: 120px;
+    opacity: 0.8;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Select2 Custom Styling */
+.select2-container {
+    width: 100% !important;
+}
+
+.select2-selection {
+    height: 2.8rem !important;
+    padding: 0.5rem;
+}
+
+/* Checked Ingredient List */
+.checked {
+    margin-top: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.checked li {
+    background: #fff;
+    border-left: 5px solid #007bff;
+    margin-bottom: 0.5rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 0.95rem;
+}
+
+/* Final Recipe List */
+.final {
+    margin-top: 2rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.recipe h3 {
+    background: #007bff;
+    color: #fff;
+    padding: 0.6rem;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.recipe ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.recipe li {
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.cRights{
+    direction: ltr;
+    text-align: center;
+}
+/* Mobile Responsiveness */
+@media (min-width: 768px) {
+    body {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1.1rem;
+    }
+
+    input, select {
+        font-size: 1.1rem;
+    }
+}

@@ -1,13 +1,36 @@
 $(document).ready(() => {
+    // Dummy data for missing variables
+    let productNames = ["Product1", "Product2"];
+    let materials = ["Material1", "Material2"];
+    let ingredientsDB = [
+        { id: 1, name: "Ingredient1" },
+        { id: 2, name: "Ingredient2" },
+    ];
 
     let recipie = [];
-    let html = ''
+    let html = '';
+    let matHtml = '';
+    let productNameHtml = '';
 
-    ingredientsDB.map(ing => {
-        html+='<option id="'+ing.id+'">'+ing.name+'</option>';
-    })
-    $('.box').html('<select>'+html+'</select>')
+    // Populate product options
+    productNames.forEach(product => {
+        productNameHtml += `<option value="${product}">${product}</option>`;
+    });
+    $('.productName').html(productNameHtml);
 
+    // Populate material options
+    materials.forEach(mat => {
+        matHtml += `<option value="${mat}">${mat}</option>`;
+    });
+    $('.material').html(matHtml);
+
+    // Populate ingredient options
+    ingredientsDB.forEach(ing => {
+        html += `<option value="${ing.id}">${ing.name}</option>`;
+    });
+    $('.box').html(`<select class="ingredient">${html}</select>`);
+
+    // Add Ingredient Button Click
     $('#addIngredient').on('click', () => {
         const productName = $('.productName').val();
         const amountOfProducts = $('.amountOfProducts').val();
@@ -26,8 +49,8 @@ $(document).ready(() => {
             ingredients: {
                 ingredient: ingredient,
                 unit: unit,
-                equity: Number(equity)
-            }
+                equity: Number(equity),
+            },
         };
 
         recipie.push(total);
@@ -46,8 +69,8 @@ $(document).ready(() => {
         `);
     });
 
+    // Finish Button Click
     $('#finish').on('click', () => {
-        // Ensure recipie array is not empty
         if (recipie.length === 0) {
             alert('No recipes to finish!');
             return;
@@ -64,7 +87,7 @@ $(document).ready(() => {
                 <h3>${recipe.productName} - כמות: ${recipe.amountOfProducts}</h3>
                 <ul>${ingredientsHtml}</ul>
             </div>
-        `;
+            `;
             $('.final').append(recipeHtml);
         });
 
@@ -74,22 +97,18 @@ $(document).ready(() => {
             type: "POST",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
-                recipes: recipie // Sending the entire array
+                recipes: recipie,
             }),
             success: function (data) {
-                console.log({recipie})
-                $('.box').append('המתכון נשלח בהצלחה!');
+                console.log({ recipie });
+                $('.box').append('<p>המתכון נשלח בהצלחה!</p>');
             },
             error: function (error) {
                 console.error("Error submitting recipe:", error);
-            }
+            },
         });
 
-        // Clear the recipe array after appending to DOM and sending data
-        // recipie = [];
-
-
+        // Clear the recipe array after sending data
+        recipie = [];
     });
-
-
 });
