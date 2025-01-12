@@ -1,5 +1,16 @@
 $(document).ready(() => {
     let recipie = [];
+    let doneRecieps = JSON.parse(localStorage.getItem('doneRecieps')) || [];
+
+    // Render done recipes from localStorage
+    const renderDoneRecieps = () => {
+        $('.DoneItems').empty(); // Clear existing items
+        doneRecieps.forEach(item => {
+            $('.DoneItems').append(`<li>${item} <img src="https://i.pinimg.com/736x/c9/0d/aa/c90daad8cb3b5a4f58ebf1594d8530fd.jpg"/></li>`);
+        });
+    };
+
+    renderDoneRecieps();
 
     // Handle conditor selection and populate product names
     $('#conditorsNames').on('change', () => {
@@ -43,8 +54,8 @@ $(document).ready(() => {
     $('#addIngredient').on('click', () => {
         const productName = $('.productName').select2('data')[0]?.text;
         const amountOfProducts = $('.amountOfProducts').val();
-        const ingredient = $('.otherIngredient').length > 0 
-            ? $('.otherIngredient').val() 
+        const ingredient = $('.otherIngredient').length > 0
+            ? $('.otherIngredient').val()
             : $('.ingredient').select2('data')[0]?.text;
         const unit = $('#unitType').val();
         const quantity = $('#quantity').val();
@@ -76,12 +87,24 @@ $(document).ready(() => {
         $('#quantity').val('');
     });
 
-    // Finish Button Click
+
     $('#finish').on('click', () => {
         if (recipie.length === 0) {
             alert('אין מתכונים לסיים!');
             return;
         }
+
+
+        const reciepeName = $('.productName').select2('data')[0]?.text;
+        if (reciepeName) {
+            doneRecieps.push(reciepeName);
+            localStorage.setItem('doneRecieps', JSON.stringify(doneRecieps));
+
+            // Append only the new recipe
+            $('.DoneItems').append(`<li>${reciepeName} <img src="https://i.pinimg.com/736x/c9/0d/aa/c90daad8cb3b5a4f58ebf1594d8530fd.jpg"/></li>`);
+        }
+        recipie = [];
+        $('.checked').empty();
 
         $.ajax({
             url: 'https://hook.eu2.make.com/pgzu9bge32pnhdcw38lcf982bcd9fwwc',
@@ -98,4 +121,5 @@ $(document).ready(() => {
             }
         });
     });
+
 });

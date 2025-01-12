@@ -36,6 +36,9 @@ input, select, button {
     border-radius: 5px;
     font-size: 1rem;
 }
+.DoneItems img{
+    width: 20px;
+}
 
 input:focus, select:focus {
     outline: none;
